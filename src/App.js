@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import FlipFormComponent from './FlipFormComponent';
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
         test
         <form>
           <button >RESTART GAME</button>
+          <FlipFormComponent />
         </form>
       </div>
     );
