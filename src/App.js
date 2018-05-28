@@ -5,7 +5,10 @@ class App extends Component {
   render() {
     return (
       <div >
-
+        test
+        <form>
+          <button >RESTART GAME</button>
+        </form>
       </div>
     );
   }
