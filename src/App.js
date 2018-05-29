@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <div >
         <FlipFormComponent />
+        <p>account: {account}</p>
         <h3>List of flips</h3>
         <ul>
           {flips.map((b, index) => (
@@ -18,7 +19,7 @@ class App extends Component {
             </li>
           ))}
         </ul>
-        <p>account: {account}</p>
+
       </div>
     );
   }
