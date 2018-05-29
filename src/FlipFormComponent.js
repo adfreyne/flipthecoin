@@ -19,7 +19,8 @@ class FlipFormComponent extends PureComponent {
   }
 }
 const onSubmit = ({ amount, choice }, dispatch) => {
-  dispatch(play(amount, choice))
+  dispatch(
+    play(amount, choice))
 
 }
 export default reduxForm({

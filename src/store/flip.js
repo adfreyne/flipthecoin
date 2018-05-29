@@ -1,6 +1,7 @@
 const coin = ['heads', 'tails']
+let account = 100
 const initialState = {
-  account: 100,
+  // account: 100,
   coin: coin[0],
   flips: [],
   choice: 1,
@@ -12,6 +13,7 @@ export const play = (amount, choice) => ({
   payload: {
     amount,
     choice,
+    // account,
     coin: coin[Math.floor(Math.random() * 2)],
   }
 })
@@ -34,6 +36,27 @@ export const reducer = (state = initialState, action) => {
       flips: [coin, ...state.flips],
       account: 100,
     }
+  }
+  return state
+}
+export const reducer2 = (state = initialState, action) => {
+  if (action.type === 'PLAY') {
+    const { amount, choice, coin } = action.payload
+    console.log(account)
+
+    if (choice === coin) {
+      return {
+        amount: amount,
+        account: account += parseInt(amount, 10)
+      }
+    }
+    else {
+      return {
+        amount: amount,
+        account: account -= parseInt(amount, 10)
+      }
+    }
+
   }
   return state
 }
