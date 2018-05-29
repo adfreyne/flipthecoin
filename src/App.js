@@ -19,7 +19,6 @@ class App extends Component {
           ))}
         </ul>
         <p>account: {account}</p>
-
       </div>
     );
   }
@@ -28,5 +27,6 @@ const mapStateToProps = (state) => ({
   flipResult: state.flip.flipResult,
   flips: state.flip.flips,
   account: state.flip.account,
+  choice: state.flip.choice
 })
 export default connect(mapStateToProps)(App)
