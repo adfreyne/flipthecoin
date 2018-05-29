@@ -1,8 +1,9 @@
+const coin = ['heads', 'tails']
 const initialState = {
   account: 100,
-  flipResult: '',
+  coin: coin[0],
   flips: [],
-  choice: '',
+  choice: 1,
   win: false
 }
 
@@ -11,7 +12,7 @@ export const play = (amount, choice) => ({
   payload: {
     amount,
     choice,
-    flipResult: Math.floor(Math.random() * 2),
+    coin: coin[Math.floor(Math.random() * 2)],
   }
 })
 export const reducer = (state = initialState, action) => {
@@ -20,18 +21,18 @@ export const reducer = (state = initialState, action) => {
     const {
       amount,
       choice,
-      flipResult,
-      win
+      coin,
     } = action.payload
-    console.log('amount: ' + amount, 'choice: ' + choice, 'flipResult: ' + flipResult, 'eval: ' + win)
+    const win = choice === coin
+    console.log('amount: ' + amount, 'choice: ' + choice, 'flipResult: ' + coin, 'eval: ' + win)
+
     return {
       amount: amount,
       choice: choice,
-      flipResult: flipResult,
+      coin: coin,
 
-      flips: [flipResult, ...state.flips],
+      flips: [coin, ...state.flips],
       account: 100,
-      win: choice === flipResult
     }
   }
   return state
