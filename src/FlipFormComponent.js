@@ -8,16 +8,20 @@ class FlipFormComponent extends PureComponent {
 
     return (
       <form onSubmit={handleSubmit}>
-        <Field name='bet' component='input' type='number' />
-        <button type='submit'>HEADS</button>
-        <button type='submit'>TAILS</button>
-      </form>
+        <Field name='amount' component='input' type='number' />
+        <Field name="choice" component="select">
+          <option value="1">HEADS</option>
+          <option value="0">TAILS</option>
+        </Field>
+        <button type='submit'>BET</button>
+      </form >
     )
   }
 }
-const onSubmit = ({ bet }, dispatch) => {
-  dispatch(play(bet))
-  console.log(bet)
+const onSubmit = ({ amount, choice }, dispatch) => {
+  dispatch(play(amount, choice))
+  //console.log('amount: ' + amount, 'choice: ' + choice, 'flipResult: ' + flipResult, 'eval: ' + (choice === flipResult))
+
 }
 export default reduxForm({
   form: 'bet',

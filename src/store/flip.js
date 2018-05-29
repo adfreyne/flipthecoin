@@ -1,27 +1,33 @@
 const initialState = {
+  account: 100,
   flipResult: 1,
-  bets: []
+  flips: [],
+  choice: 0,
 }
-export const restartGame = () => ({
-  type: 'RESTART',
-  payload: []
-})
-export const play = () => ({
-  type: 'PLAY',
-  payload: Math.floor(Math.random() * 2)
-})
 
-export const reducer = (state = initialState, action) => {
-  if (action.type === 'RESTART') {
-    return {
-      flipResult: 0,
-      bets: []
-    }
+export const play = (amount, choice) => ({
+  type: 'PLAY',
+  payload: {
+    amount,
+    choice,
+    flipResult: Math.floor(Math.random() * 2),
   }
+})
+export const reducer = (state = initialState, action) => {
+
   if (action.type === 'PLAY') {
+    const {
+      amount,
+      choice,
+      flipResult,
+    } = action.payload
+    console.log('amount: ' + amount, 'choice: ' + choice, 'flipResult: ' + flipResult)
     return {
-      flipResult: action.payload,
-      bets: [action.payload, ...state.bets]
+      flipResult: flipResult,
+      amount: amount,
+      flips: [flipResult, ...state.flips],
+      choice: choice,
+      account: 100,
     }
   }
   return state
